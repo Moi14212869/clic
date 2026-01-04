@@ -14,14 +14,20 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #00f5ff, #0066ff);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #00f5ff, #0066ff);
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
         .card {
             background: white;
@@ -90,11 +96,12 @@
     </style>
 </head>
 <body>
-
+    <div class="main">
     <div class="card">
         <h1>Clic 🎯</h1>
         <p>Clics : <span id="count">0</span></p>
         <button id="button" onclick="add()">CLIC</button>
+    </div>
     </div>
     <footer>
         &copy; 2026 OneLevel Studio. Tous droits réservés.
