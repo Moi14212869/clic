@@ -159,6 +159,7 @@ body {
     <div class="card">
         <h1>Clic 🎯</h1>
         <p>Clics : <span id="count">0</span></p>
+        <p>Par clic : <span id="perClick">1</span></p>
         <button id="button" onclick="add()">CLIC</button>
     </div>
     </div>
@@ -177,9 +178,11 @@ body {
         const count = document.getElementById("count");
         const sound = document.getElementById("pop");
         const button = document.getElementById("button");
-
+        const perClick = document.getElementById("perClick");
+        
         let clics = localStorage.getItem("clics");
         let number = parseInt(localStorage.getItem("number")) || 1;
+        perClick.textContent = number;
         clics = clics ? parseInt(clics) : 0;
         count.textContent = clics;
 
@@ -211,12 +214,15 @@ function addClic() {
         number++;
 
         count.textContent = clics;
+        perClick.textContent = number;
+
         localStorage.setItem("clics", clics);
         localStorage.setItem("number", number);
     } else {
         alert("Pas assez de clics !");
     }
 }
+
 
     </script>
 </body>
