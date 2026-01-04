@@ -93,6 +93,58 @@ body {
             padding: 20px;
             color: #aaa;
         }
+        /* Bouton shop */
+.shop-button {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+/* Panneau shop */
+.shop {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.25);
+    padding: 30px;
+    transition: right 0.3s ease;
+    z-index: 999;
+}
+
+.shop.open {
+    right: 0;
+}
+
+.shop h2 {
+    margin-top: 0;
+    color: #0066ff;
+}
+
+.shop button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    background: #0066ff;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
     </style>
 </head>
 <body>
@@ -103,6 +155,15 @@ body {
         <button id="button" onclick="add()">CLIC</button>
     </div>
     </div>
+    <button class="shop-button" onclick="toggleShop()">Shop 🛒</button>
+
+<div class="shop" id="shop">
+    <h2>🛒 Shop</h2>
+    <p>Améliorations à venir :</p>
+
+    <button disabled>+1 clic / clic (100)</button>
+    <button disabled>Auto-clic (500)</button>
+</div>
     <footer>
         &copy; 2026 <a href="https://moi14212869.github.io/onelevel/" target="_blank">OneLevel Studio</a>. Tous droits réservés.
     </footer>
@@ -132,7 +193,12 @@ body {
 
             localStorage.setItem("clics", clics);
         }
-    </script>
+        const shop = document.getElementById("shop");
 
+    function toggleShop() {
+        shop.classList.toggle("open");
+    }
+
+    </script>
 </body>
 </html>
