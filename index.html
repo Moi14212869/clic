@@ -1,81 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clic</title>
+    <title>Clic Game</title>
+
+    <!-- Police Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
     <style>
         * {
-            background-color: #00ffff;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #00f5ff, #0066ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
         h1 {
-            text-align: center;
-            font-size: 5rem;
-            color: blue;
-            margin-top: 25px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #0066ff;
         }
+
         p {
-            color: #0000ff;
-            font-size: 2rem;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 30px;
         }
-        .container {
-            text-align: center;
+
+        #count {
+            font-weight: 800;
+            color: #0066ff;
         }
+
         #button {
-            background-color: #0000ff;
-            color: #fff;
-            cursor: pointer;
-            padding: 15px 30px;
-            margin-top: 150px;
-            font-size: 1rem;
+            background: linear-gradient(135deg, #0066ff, #00c6ff);
+            color: white;
+            font-size: 1.4rem;
+            padding: 18px 45px;
             border: none;
-            box-shadow: 0 10px 20px #00000040;
-            transition: transform 0.1s ease, box-shadow 0.1s ease;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 12px 25px rgba(0, 102, 255, 0.4);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
 
         #button:hover {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         #button:active {
             transform: scale(0.95);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 12px rgba(0, 102, 255, 0.3);
         }
+
         .click-animation {
             animation: pop 0.2s ease;
         }
 
         @keyframes pop {
             0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            50% { transform: scale(1.2); }
             100% { transform: scale(1); }
+        }
+
+        footer {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #777;
         }
     </style>
 </head>
 <body>
-    <h1>Clic</h1>
-    <p>Clics : <span id="count">0</span></p>
-    <div class="container">
-        <button id="button" onclick="add()">Clic</button>
+
+    <div class="card">
+        <h1>Clic 🎯</h1>
+        <p>Clics : <span id="count">0</span></p>
+        <button id="button" onclick="add()">CLIC</button>
+        <footer>Ton score est sauvegardé 💾</footer>
     </div>
+
     <audio id="pop" src="pop.mp3" preload="auto"></audio>
+
     <script>
         const count = document.getElementById("count");
         const sound = document.getElementById("pop");
+        const button = document.getElementById("button");
+
         let clics = localStorage.getItem("clics");
-        if (clics === null) {
-            clics = 0;
-        } else {
-            clics = parseInt(clics);
-        }
+        clics = clics ? parseInt(clics) : 0;
         count.textContent = clics;
+
         function add() {
             clics++;
             count.textContent = clics;
+
+            // Animation
+            button.classList.remove("click-animation");
+            void button.offsetWidth;
+            button.classList.add("click-animation");
+
+            // Son
             const clickSound = sound.cloneNode();
-            clickSound.play()
-            localStorage.setItem("clics", clics);
-        }
-    </script>
-</body>
-</html>
