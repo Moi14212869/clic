@@ -166,10 +166,7 @@ body {
 
 <div class="shop" id="shop">
     <h2>🛒 Shop</h2>
-    <p>Améliorations à venir :</p>
-
-    <button disabled>+1 clic / clic (100)</button>
-    <button disabled>Auto-clic (500)</button>
+    <button oneclick="addClic()">+1 clic / clic (100)</button>
 </div>
     <footer>
         &copy; 2026 <a href="https://moi14212869.github.io/onelevel/" target="_blank">OneLevel Studio</a>. Tous droits réservés.
@@ -182,11 +179,12 @@ body {
         const button = document.getElementById("button");
 
         let clics = localStorage.getItem("clics");
+        let number = localStorage.getItem("number") || 1;
         clics = clics ? parseInt(clics) : 0;
         count.textContent = clics;
 
         function add() {
-            clics++;
+            clics = clics + number;
             count.textContent = clics;
 
             // Animation
@@ -207,7 +205,12 @@ function toggleShop() {
     shop.classList.toggle("open");
     shopButton.classList.toggle("open");
 }
-
+function addClic() {
+    number++;
+    clics = clics - 100;
+    localStorage.setItem("clics", clics);
+    localStorage.setItem("number", number);
+}
     </script>
 </body>
 </html>
