@@ -108,7 +108,14 @@ body {
     cursor: pointer;
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     z-index: 1000;
+    transition: right 0.3s ease;
 }
+
+/* Quand le shop est ouvert */
+.shop-button.open {
+    right: 340px; /* largeur du shop + marge */
+}
+
 
 /* Panneau shop */
 .shop {
@@ -193,11 +200,13 @@ body {
 
             localStorage.setItem("clics", clics);
         }
-        const shop = document.getElementById("shop");
+const shop = document.getElementById("shop");
+const shopButton = document.querySelector(".shop-button");
 
-    function toggleShop() {
-        shop.classList.toggle("open");
-    }
+function toggleShop() {
+    shop.classList.toggle("open");
+    shopButton.classList.toggle("open");
+}
 
     </script>
 </body>
