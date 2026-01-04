@@ -176,10 +176,11 @@ body {
         &copy; 2026 <a href="https://moi14212869.github.io/onelevel/" target="_blank">OneLevel Studio</a>. Tous droits réservés.
     </footer>
     <audio id="pop" src="pop.mp3" preload="auto"></audio>
-
+    <audio id="buy" src="buy.mp3" preload="auto"></audio>
     <script>
         const count = document.getElementById("count");
-        const sound = document.getElementById("pop");
+        const pop = document.getElementById("pop");
+        const buy = document.getElementById("buy");
         const button = document.getElementById("button");
         const perClick = document.getElementById("perClick");
         
@@ -199,7 +200,7 @@ body {
             button.classList.add("click-animation");
 
             // Son
-            const clickSound = sound.cloneNode();
+            const clickSound = pop.cloneNode();
             clickSound.play();
 
             localStorage.setItem("clics", clics);
@@ -219,6 +220,9 @@ function addClic() {
         count.textContent = clics;
         perClick.textContent = number;
 
+        const buySound = buy.cloneNode();
+        buySound.play();
+        
         localStorage.setItem("clics", clics);
         localStorage.setItem("number", number);
     } else {
