@@ -216,7 +216,7 @@ function toggleShop() {
 function addOneClic() {
     if (clics >= 100) {
         clics -= 100;
-        number = number + 10;
+        number++;
 
         count.textContent = clics;
         perClick.textContent = number;
@@ -233,7 +233,7 @@ function addOneClic() {
 function addThenClic() {
     if (clics >= 950) {
         clics -= 950;
-        number++;
+        number = number + 10;
 
         count.textContent = clics;
         perClick.textContent = number;
