@@ -170,7 +170,8 @@ body {
 
 <div class="shop" id="shop">
     <h2>🛒 Shop</h2>
-    <button onclick="addClic()">+1 clic / clic (100)</button>
+    <button onclick="addOneClic()">+1 clic / clic (100)</button>
+    <button onclick="addThenClic()">+10 clic / clic (950)</button>
 </div>
     <footer>
         &copy; 2026 <a href="https://moi14212869.github.io/onelevel/" target="_blank">OneLevel Studio</a>. Tous droits réservés.
@@ -212,7 +213,7 @@ function toggleShop() {
     shop.classList.toggle("open");
     shopButton.classList.toggle("open");
 }
-function addClic() {
+function addOneClic() {
     if (clics >= 100) {
         clics -= 100;
         number++;
@@ -229,7 +230,23 @@ function addClic() {
         alert("Pas assez de clics !");
     }
 }
+function addThenClic() {
+    if (clics >= 950) {
+        clics -= 950;
+        number++;
 
+        count.textContent = clics;
+        perClick.textContent = number;
+
+        const buySound = buy.cloneNode();
+        buySound.play();
+        
+        localStorage.setItem("clics", clics);
+        localStorage.setItem("number", number);
+    } else {
+        alert("Pas assez de clics !");
+    }
+}
 
     </script>
 </body>
