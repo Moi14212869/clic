@@ -170,8 +170,8 @@ body {
 
 <div class="shop" id="shop">
     <h2>🛒 Shop</h2>
-    <button onclick="addOneClic()">+1 clic / clic (100)</button>
-    <button onclick="addThenClic()">+10 clic / clic (950)</button>
+    <button onclick="addClic(1)">+1 clic / clic (100)</button>
+    <button onclick="addClic(10)">+10 clic / clic (950)</button>
 </div>
     <footer>
         &copy; 2026 <a href="https://moi14212869.github.io/onelevel/" target="_blank">OneLevel Studio</a>. Tous droits réservés.
@@ -179,6 +179,8 @@ body {
     <audio id="pop" src="pop.mp3" preload="auto"></audio>
     <audio id="buy" src="buy.mp3" preload="auto"></audio>
     <script>
+        let autoClick = parseInt(localStorage.getItem("autoClick")) || 0;
+        const autoClickInterval = 1000;
         const count = document.getElementById("count");
         const pop = document.getElementById("pop");
         const buy = document.getElementById("buy");
@@ -213,10 +215,10 @@ function toggleShop() {
     shop.classList.toggle("open");
     shopButton.classList.toggle("open");
 }
-function addOneClic() {
-    if (clics >= 100) {
-        clics -= 100;
-        number++;
+function addClic(let count) {
+    if (clics >= count) {
+        clics -= count;
+        number=number+count;
 
         count.textContent = clics;
         perClick.textContent = number;
@@ -230,24 +232,6 @@ function addOneClic() {
         alert("Pas assez de clics !");
     }
 }
-function addThenClic() {
-    if (clics >= 950) {
-        clics -= 950;
-        number = number + 10;
-
-        count.textContent = clics;
-        perClick.textContent = number;
-
-        const buySound = buy.cloneNode();
-        buySound.play();
-        
-        localStorage.setItem("clics", clics);
-        localStorage.setItem("number", number);
-    } else {
-        alert("Pas assez de clics !");
-    }
-}
-
     </script>
 </body>
 </html>
