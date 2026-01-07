@@ -163,6 +163,7 @@ body {
         <h1>Clic 🎯</h1>
         <p>Clics : <span id="count">0</span></p>
         <p>Par clic : <span id="perClick">1</span></p>
+        <p>Par seconde : <span id="autoClickDisplay">0</span> / sec</p>
         <button id="button" onclick="add()">CLIC</button>
     </div>
     </div>
@@ -225,7 +226,7 @@ function toggleShop() {
     shop.classList.toggle("open");
     shopButton.classList.toggle("open");
 }
-function addClic(let count, let prix) {
+function addClic(count, prix) {
     if (clics >= prix) {
         clics -= prix;
         number=number+count;
@@ -242,6 +243,27 @@ function addClic(let count, let prix) {
         alert("Pas assez de clics !");
     }
 }
+        function upgradeAutoClick() {
+    const cost = 500; // coût initial, tu peux le rendre exponentiel si tu veux
+    if (clics >= cost) {
+        clics -= cost;
+        autoClick += 1;
+
+        count.textContent = clics;
+        document.getElementById("autoClickDisplay").textContent = autoClick;
+
+        buy.cloneNode().play();
+
+        localStorage.setItem("clics", clics);
+        localStorage.setItem("autoClick", autoClick);
+    } else {
+        alert("Pas assez de clics !");
+    }
+}
+
+// Mettre à jour l'affichage au chargement
+document.getElementById("autoClickDisplay").textContent = autoClick;
+
     </script>
 </body>
 </html>
