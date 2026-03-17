@@ -135,8 +135,19 @@ body {
     padding: 30px;
     transition: right 0.3s ease;
     z-index: 999;
+    overflow-y: auto;
+.shop::-webkit-scrollbar {
+    width: 8px;
 }
 
+.shop::-webkit-scrollbar-thumb {
+    background: #0066ff;
+    border-radius: 10px;
+}
+
+.shop::-webkit-scrollbar-track {
+    background: #eee;
+}
 .shop.open {
     right: 0;
 }
