@@ -186,15 +186,19 @@ body {
 
 <div class="shop" id="shop">
     <h2>🛒 Shop</h2>
-    <button onclick="buyClick(1)">+1 clic / clic (100)</button>
-    <button onclick="buyAutoClick(1)">+1 auto-clic / sec (500)</button>
-    <button onclick="buyClick(10)">+10 clic / clic (950)</button>
-    <button onclick="buyAutoClick(10)">+10 auto-clic / sec (4950)</button>
-    <button onclick="buyClick(100)">+100 clic / clic (9450)</button>
-    <button onclick="buyAutoClick(100)">+100 auto-clic / sec (49950)</button>
-    <button onclick="buyClick(1000)">+1000 clic / clic (94440)</button>
-    <button onclick="buyAutoClick(1000)">+1000 auto-clic / sec (499950)</button>
-    <button onclick="buyClick(10000)">+10000 clic / clic (944440)</button>
+<button id="btnClick1" onclick="buyClick(1)">+1 clic / clic</button>
+<button id="btnAuto1" onclick="buyAutoClick(1)">+1 auto-clic / sec</button>
+
+<button id="btnClick10" onclick="buyClick(10)">+10 clic / clic</button>
+<button id="btnAuto10" onclick="buyAutoClick(10)">+10 auto-clic / sec</button>
+
+<button id="btnClick100" onclick="buyClick(100)">+100 clic / clic</button>
+<button id="btnAuto100" onclick="buyAutoClick(100)">+100 auto-clic / sec</button>
+
+<button id="btnClick1000" onclick="buyClick(1000)">+1000 clic / clic</button>
+<button id="btnAuto1000" onclick="buyAutoClick(1000)">+1000 auto-clic / sec</button>
+
+<button id="btnClick10000" onclick="buyClick(10000)">+10000 clic / clic</button>
 </div>
     <footer>
         &copy; 2026 <a href="https://moi14212869.github.io/onelevel/" target="_blank">OneLevel Studio</a>. Tous droits réservés.
@@ -234,6 +238,36 @@ body {
     }
 
     return total;
+}
+        function updatePrices() {
+    let r = 1.15;
+
+    document.getElementById("btnClick1").textContent =
+        "+1 clic / clic (" + getCost(100, clickLevel, 1) + ")";
+
+    document.getElementById("btnAuto1").textContent =
+        "+1 auto-clic / sec (" + getCost(500, autoClickLevel, 1) + ")";
+
+    document.getElementById("btnClick10").textContent =
+        "+10 clic / clic (" + getCost(100, clickLevel, 10) + ")";
+
+    document.getElementById("btnAuto10").textContent =
+        "+10 auto-clic / sec (" + getCost(500, autoClickLevel, 10) + ")";
+
+    document.getElementById("btnClick100").textContent =
+        "+100 clic / clic (" + getCost(100, clickLevel, 100) + ")";
+
+    document.getElementById("btnAuto100").textContent =
+        "+100 auto-clic / sec (" + getCost(500, autoClickLevel, 100) + ")";
+
+    document.getElementById("btnClick1000").textContent =
+        "+1000 clic / clic (" + getCost(100, clickLevel, 1000) + ")";
+
+    document.getElementById("btnAuto1000").textContent =
+        "+1000 auto-clic / sec (" + getCost(500, autoClickLevel, 1000) + ")";
+
+    document.getElementById("btnClick10000").textContent =
+        "+10000 clic / clic (" + getCost(100, clickLevel, 10000) + ")";
 }
         function add() {
             clics = clics + number;
@@ -314,7 +348,7 @@ function buyClick(amount) {
 
 // Mettre à jour l'affichage au chargement
 document.getElementById("autoClickDisplay").textContent = autoClick;
-
+setInterval(updatePrices, 500);
     </script>
 </body>
 </html>
